@@ -1,0 +1,125 @@
+SISTEMA (nombre) - TALLER DE REPARACION DE AUTOS
+================================================
+
+INSTRUCCIONES DE INSTALACION
+----------------------------
+
+1. COPIAR ARCHIVOS
+   Copiar toda la carpeta 'nombre-sistema' dentro de:
+   C:/xampp/htdocs/
+
+2. CREAR BASE DE DATOS
+   Abrir phpMyAdmin (http://localhost/phpmyadmin)
+   O ejecutar en linea de comandos MySQL:
+
+   mysql -u root -p < sql/estructura.sql
+
+   Esto creara la base de datos 'taller_db' con todas las tablas
+   y datos de prueba necesarios.
+
+3. CONFIGURACION DE BASE DE DATOS
+   Por defecto, la conexion usa:
+   - Host: localhost
+   - Usuario: root
+   - Contrasena: (vacia)
+   - Base de datos: taller_db
+
+   Si su configuracion de XAMPP es diferente, editar el archivo:
+   config/Database.php
+   Modificar las propiedades: $host, $user, $password, $dbname
+
+4. ACCEDER AL SISTEMA
+   Abrir en su navegador:
+   http://localhost/nombre-sistema/
+
+5. CREDENCIALES DE PRUEBA
+
+   ADMINISTRADOR:
+   Correo: admin@taller.com
+   Contrasena: Admin2024
+
+   MECANICOS:
+   Correo: carlos@taller.com
+   Contrasena: Mecanico2024
+
+   Correo: ana@taller.com
+   Contrasena: Mecanico2024
+
+ESTRUCTURA DEL SISTEMA
+----------------------
+
+/nombre-sistema/
+  index.php              - Redireccion a login o dashboard
+  login.php              - Pantalla de acceso
+  logout.php             - Cerrar sesion
+  dashboard.php          - Panel principal con estadisticas
+
+  config/
+    Database.php         - Conexion PDO (singleton)
+
+  clases/
+    Usuario.php          - Gestion de usuarios
+    Vehiculo.php         - Gestion de vehiculos
+    Cubiculo.php         - Gestion de cubiculos
+    Registro.php         - Registros de entrada/salida
+    Mantenimiento.php    - Gestion de mantenimientos
+
+  controllers/
+    AuthController.php   - Autenticacion y sesiones
+    VehiculoController.php
+    CubiculoController.php
+    MantenimientoController.php
+    ReporteController.php
+
+  vistas/
+    layout/
+      header.php         - Cabecera HTML con assets
+      sidebar.php        - Menu lateral
+      footer.php         - Scripts de cierre
+
+  vehiculos/
+    registro.php         - Formulario de registro
+    lista.php            - Listado de vehiculos
+
+  cubiculos/
+    panel.php            - Panel visual de cubiculos
+
+  mantenimientos/
+    formulario.php       - Nuevo mantenimiento
+    lista.php            - Lista de mantenimientos
+    actualizar_estado.php - Cambio de estado
+
+  reportes/
+    informe.php          - Generador de reportes
+
+  api/
+    cubiculos.php        - Endpoint JSON para cubiculos
+
+  assets/
+    css/                 - Hojas de estilo
+    js/                  - JavaScript
+    img/                 - SVGs e imagenes
+
+  sql/
+    estructura.sql       - Script completo de base de datos
+
+REQUISITOS DEL SISTEMA
+----------------------
+
+- XAMPP con Apache + MySQL + PHP 8+
+- Navegador moderno (Chrome, Firefox, Edge, Safari)
+- Resolucion de pantalla minima: 768px de ancho
+- No compatible con telefonos en orientacion vertical
+
+RENOMBRAR EL SISTEMA
+--------------------
+
+Para cambiar el nombre '(nombre)' por el nombre definitivo:
+Buscar y reemplazar '(nombre)' en todos los archivos del proyecto.
+Esto incluye titulos, logos, y referencias en toda la interfaz.
+
+SOPORTE
+-------
+
+Para reportar problemas o solicitar cambios, contactar
+al administrador del sistema.

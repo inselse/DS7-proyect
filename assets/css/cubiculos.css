@@ -1,0 +1,398 @@
+.contenido-interno:has(.taller-grid) {
+    background:
+        linear-gradient(rgba(15, 21, 35, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 21, 35, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-color: #F1F5F9;
+    min-height: calc(100vh - var(--header-alto));
+}
+
+.taller-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+@media (max-width: 1200px) {
+    .taller-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1024px) {
+    .taller-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .taller-grid { grid-template-columns: 1fr; }
+}
+
+.cubiculo-card {
+    background: var(--color-superficie);
+    border-radius: var(--radio-tarjeta);
+    border: 1px solid var(--color-borde);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.cubiculo-card.libre {
+    border-left: 4px solid var(--color-exito);
+}
+
+.cubiculo-card.libre:hover {
+    border-color: rgba(34, 197, 94, 0.2);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 0 20px rgba(34, 197, 94, 0.08);
+}
+
+.cubiculo-card.ocupado {
+    border-left: 4px solid var(--color-alerta);
+    background: var(--color-superficie);
+}
+
+.cubiculo-card.ocupado::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 50% 0%, rgba(232, 122, 35, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cubiculo-card:hover {
+    box-shadow: var(--sombra-elevada);
+    transform: translateY(-2px);
+}
+
+.cubiculo-card.ocupado:hover {
+    border-color: rgba(232, 122, 35, 0.2);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 0 20px rgba(232, 122, 35, 0.08);
+}
+
+.cubiculo-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.cubiculo-numero {
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-texto-principal);
+}
+
+.cubiculo-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.cubiculo-badge.ocupado {
+    background: rgba(232, 122, 35, 0.12);
+    color: #D97706;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+.cubiculo-badge.libre {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--color-exito);
+}
+
+@keyframes badgePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.cubiculo-card-body {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.cubiculo-auto-svg {
+    width: 120px;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.cubiculo-auto-svg svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.cubiculo-card.ocupado:hover .cubiculo-auto-svg {
+    transform: scale(1.08);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.cubiculo-vacio-svg {
+    width: 100px;
+    height: auto;
+    opacity: 0.5;
+}
+
+.cubiculo-vacio-svg svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.cubiculo-info-rapida {
+    text-align: center;
+}
+
+.cubiculo-placa {
+    display: block;
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-texto-principal);
+    letter-spacing: 0.04em;
+}
+
+.cubiculo-dueno {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-texto-sidebar);
+    margin-top: 0.125rem;
+}
+
+.cubiculo-tiempo {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    color: var(--color-alerta);
+    margin-top: 0.25rem;
+    opacity: 0.8;
+}
+
+.cubiculo-tiempo i {
+    font-size: 0.6rem;
+}
+
+.cubiculo-disponible-texto {
+    font-size: 0.8rem;
+    color: var(--color-texto-sidebar);
+    opacity: 0.6;
+}
+
+.cubiculo-progreso {
+    width: 100%;
+    max-width: 140px;
+}
+
+.cubiculo-progreso-bar {
+    height: 3px;
+    background: var(--color-borde);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cubiculo-progreso-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #22C55E, #F59E0B, #EF4444);
+    transition: width 1s ease;
+}
+
+.cubiculo-progreso-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    color: var(--color-texto-sidebar);
+    opacity: 0.6;
+    margin-top: 0.2rem;
+}
+
+.cubiculo-hover-info {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #F8FAFC;
+    backdrop-filter: blur(12px);
+    padding: 0.875rem;
+    border-top: 1px solid var(--color-borde);
+    border-radius: 0 0 var(--radio-tarjeta) var(--radio-tarjeta);
+    z-index: 10;
+}
+
+.cubiculo-card.ocupado:hover .cubiculo-hover-info {
+    display: block;
+    animation: hoverInfoIn 0.3s ease;
+}
+
+@keyframes hoverInfoIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cubiculo-hover-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.cubiculo-hover-item:last-child {
+    border-bottom: none;
+}
+
+.cubiculo-hover-label {
+    font-weight: 600;
+    color: var(--color-texto-principal);
+    flex-shrink: 0;
+}
+
+.cubiculo-mantenimientos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: flex-end;
+}
+
+.cubiculo-mantenimientos .chip-mantenimiento {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.35rem;
+}
+
+.cubiculo-card-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-borde);
+    display: flex;
+    justify-content: center;
+}
+
+.cubiculo-card-footer .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.campo {
+    position: relative;
+}
+
+.combobox-campo {
+    position: relative;
+}
+
+.combobox-wrapper {
+    position: relative;
+}
+
+.combobox-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    box-shadow: var(--sombra-md);
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 100;
+    margin-top: 0.25rem;
+}
+
+.combobox-dropdown.visible {
+    display: block;
+}
+
+.combobox-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.875rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--color-borde);
+    transition: background 0.15s;
+}
+
+.combobox-item:last-child {
+    border-bottom: none;
+}
+
+.combobox-item:hover,
+.combobox-item.destacado {
+    background: rgba(26, 111, 212, 0.06);
+}
+
+.combobox-item.seleccionado {
+    background: rgba(26, 111, 212, 0.1);
+    color: var(--color-primario);
+}
+
+.combobox-item-placa {
+    font-weight: 700;
+    font-family: var(--fuente-display);
+    font-size: 0.9rem;
+}
+
+.combobox-item-detalle {
+    font-size: 0.7rem;
+    color: var(--color-texto-secundario);
+    text-align: right;
+}
+
+.combobox-vacio {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+    text-align: center;
+}
+
+.campo-ayuda {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+    margin-top: 0.25rem;
+}
+
+.cubiculo-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cubiculo-card.ocupado .cubiculo-badge,
+.cubiculo-card.libre .cubiculo-badge {
+    transition: all 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cubiculo-card.ocupado::before { animation: none; }
+    .cubiculo-badge.ocupado { animation: none; }
+}

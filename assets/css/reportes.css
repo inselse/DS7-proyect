@@ -1,0 +1,195 @@
+.reporte-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+.reporte-titulo-imprimir h3 {
+    font-size: 1.25rem;
+}
+
+.reporte-periodo {
+    font-size: 0.82rem;
+    color: var(--color-texto-secundario);
+}
+
+.reporte-fecha-generacion {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+}
+
+.tabla-informe td,
+.tabla-informe th {
+    white-space: nowrap;
+}
+
+.celda-mantenimientos {
+    min-width: 150px;
+}
+
+.celda-costo {
+    text-align: right;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.form-acciones {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+@media print {
+    body {
+        background: #FFFFFF !important;
+        color: #000 !important;
+        font-size: 10pt;
+        line-height: 1.4;
+    }
+
+    .sidebar,
+    .header-superior,
+    .btn-toggle-sidebar,
+    .btn,
+    .form-acciones,
+    .alerta,
+    .card-header .card-acciones,
+    .buscador,
+    #bloqueo-movil {
+        display: none !important;
+    }
+
+    .contenido-principal {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .contenido-interno {
+        padding: 0 !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+    }
+
+    .card-header {
+        border-bottom: 2px solid #000 !important;
+        padding: 0.5rem 0 !important;
+    }
+
+    .card-header h3 {
+        font-size: 1.1rem !important;
+        color: #000 !important;
+    }
+
+    .card-body {
+        padding: 0.5rem 0 !important;
+    }
+
+    .reporte-encabezado {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .print-header {
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #000;
+    }
+
+    .print-header h2 {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.4rem;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .print-header p {
+        font-size: 0.75rem;
+        color: #4B5563;
+        margin: 0.25rem 0 0;
+    }
+
+    .tabla {
+        font-size: 0.7rem !important;
+        border-collapse: collapse !important;
+        width: 100%;
+    }
+
+    .tabla th {
+        background: #E5E7EB !important;
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
+        padding: 0.4rem 0.5rem !important;
+        font-size: 0.65rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .tabla td {
+        border-bottom: 1px solid #D1D5DB !important;
+        padding: 0.35rem 0.5rem !important;
+    }
+
+    .tabla tbody tr:nth-child(even) td {
+        background: #F9FAFB !important;
+    }
+
+    .tabla-informe td,
+    .tabla-informe th {
+        white-space: nowrap;
+    }
+
+    .badge,
+    .chip-mantenimiento {
+        border: 1px solid #9CA3AF !important;
+        background: transparent !important;
+        color: #000 !important;
+        font-size: 0.6rem !important;
+        padding: 0.1rem 0.35rem !important;
+    }
+
+    .fila-totales td {
+        border-top: 2px solid #000 !important;
+        font-weight: 700;
+        padding-top: 0.5rem !important;
+    }
+
+    .reporte-fecha-generacion {
+        font-size: 0.6rem !important;
+        color: #6B7280 !important;
+    }
+
+    .sin-datos {
+        padding: 1rem 0 !important;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr {
+        page-break-inside: avoid;
+    }
+
+    @page {
+        margin: 1.5cm 2cm;
+        size: landscape;
+    }
+}
+
+@media print {
+    .print-only {
+        display: block !important;
+    }
+}
+
+.print-only {
+    display: none;
+}
